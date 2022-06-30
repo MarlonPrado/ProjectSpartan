@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/css/dashboard.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/646c794df3.js"></script>
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <div class="row justify-content-center align-content-center">
+            <div class="col-8 barra">
+                <a class="navbar-brand" href="#" value='2'>
+                    <img src="https://thumbs.dreamstime.com/b/dise%C3%B1o-del-logo-casco-de-guerrero-espartano-esparta-plata-met%C3%A1lica-el-met%C3%A1lico-inspiraci%C3%B3n-202659455.jpgs"
+                        alt="" width="50" height="40" class="d-inline-block align-text-top">
+                    ATLECTIC SPARTAN
+                </a>
+            </div>
+            <div class="col-4 text-right barra">
+                <ul class="navbar-nav mr-auto">
+                    <li>
+                        <a href="#" class="px-3 text-light perfil dropdown-toggle" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
+                                class="fas fa-user-circle user"></i></a>
+
+                        <div class="dropdown-menu" aria-labelledby="navbar-dropdown">
+                            <a class="dropdown-item menuperfil cerrar" href="/"><i
+                                    class="fas fa-sign-out-alt m-1"></i>Salir
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="barra-lateral col-12 col-sm-auto">
+                <nav class="menu d-flex d-sm-block justify-content-center flex-wrap">
+                    <a href="/listado"><i class="fas fa-home"></i><span>Lista de Pruebas </span></a>
+                    <a href="/add"><i class="fas fa-home"></i><span> Diseñar una prueba </span></a>
+                    <a href="/calendario"><i class="fas fa-home"></i><span> Cronograma
+                        </span></a>
+                    <a href="/respr"><i class="fas fa-home"></i><span> Historial de Resultados </span></a>
+                </nav>
+            </div>
+
+
+
+
+
+      <main class="main col">
+
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+
+                    <!-- Content Row -->
+
+
+                    <div class="row">
+
+                        <!-- Area Chart -->
+                        <div class="col-xl-4 col-lg-4">
+                            <div class="card shadow mb-4 ">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary"> RESPONDA UNA PRUEBA   </h6>
+
+                                </div>
+
+
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="area">
+                                        <form action="/respd" method="post">
+
+                                            <label for="exampleFormControlSelect1">SELECCIONAR PRUEBA </label>
+                                            <select  name="nomPrueba" class="form-select form-select-sm" aria-label=".form-select-sm example">
+  <option selected>Abra esta lista despegable</option>
+   {{#each lpru}}
+  <option value="{{idp}} - {{nombrep}}">{{nombrep}} - {{tipodeprueba}} </option>
+  {{/each }}
+</select>
+           
+
+                                        <div class="mb-3">
+                                            <label for="exampleFormControlInput1" class="form-label"> Velocidad Promedio</label>
+                                            <input type="text" class="form-control" id="exampleFormControlInput1" name="vel">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="exampleFormControlTextarea1" class="form-label"> Tiempo Promedio
+                                            </label>
+                                            <input type="text" class="form-control" id="exampleFormControlInput1"  name="tiempo">
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="exampleFormControlTextarea1" class="form-label"> Numero de Vueltas </label>
+                                            <input type="text" class="form-control" id="exampleFormControlInput1"  name="vuelta">
+                                        </div>
+                                        <div class="mt-4 text-center small">
+                                            <button type="submit" class="btn btn-outline-secondary">Enviar </button>
+                                        </div>
+                                   
+                                    </div>
+                                </form>
+                                </div>
+
+
+
+
+                                <div class="card-body chart ">
+                                    <div
+                                        class="chart-area card-header py-3 d-flex flex-row align-items-center justify-content-between ">
+                                        <figure class="">
+                                            <img class="" src="resources/img/Homer.jpg" alt="" width="100%">
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+              
+
+            <div class="col-xl-8 col-lg-7">
+                <div class="card shadow mb-4 " id="datos" >
+                    <!-- Card Header - Dropdown -->
+                    <div
+                        class="card-header py-3 d-flex flex-row align-items-center justify-content-between  border-warning ">
+                        <h6 class="m-0 font-weight-bold   text-primary "> MIS PRUEBAS RESUELTAS   </h6>
+                        
+                    </div>
+
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <div class="chart "  >
+
+                            <table class="table">
+                                <thead>
+
+
+                                  <tr>
+                                    
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Nombre De La Prueba  </th>
+                                    <th scope="col"> RES CR1  </th>
+                                    <th scope="col"> RES CR2</th>
+                                    <th scope="col"> RES CR3 </th>
+                                    <th scope="col"> RESULTADO </th>
+                                    <th scope="col"> SUGERENCIA </th>
+                                 
+
+                                  </tr>
+                                </thead>
+                               
+                                <tbody>
+                                    <tr>
+                                     {{#each lres}}
+                                          <tr>
+                                            
+                                            <td>{{idp}}</td>
+                                            <td>{{nomPrueba}}</td>
+                                            <td>{{vel}} M/S</td>
+                                            <td>{{tiempo}} S </td>
+                                            <td>{{vuelta}} </td>
+                                            <td>{{resultado}}</td>
+                                            <td>{{recomendaciones}}</td>
+                        
+        
+                                          </tr>
+                                          {{/each }}
+                                         
+                                        
+                                    </tbody>
+                                </tr>
+                              </table>
+                              <p>
+                                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Adipisci aut quas perspiciatis deleniti sit nisi exercitationem nostrum, inventore sed, in quis amet atque laudantium asperiores! Vero eveniet corporis reiciendis totam!
+                              </p>
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+                </main>
+
+
+                </br>     
+<footer>
+
+    <div class="pfooter">
+        <div class="funo">
+            <p> © 2022 DERECHOS DE AUTOR ATLETIC SPARTAN  - Previo Corte II</p>
+        </div>
+
+        <div class="fdos">
+            <img src="https://thumbs.dreamstime.com/b/dise%C3%B1o-del-logo-casco-de-guerrero-espartano-esparta-plata-met%C3%A1lica-el-met%C3%A1lico-inspiraci%C3%B3n-202659455.jpgs"
+                alt="" width="40" height="40">
+        </div>
+
+        <div class="ftres">
+            <i class="fa-brands fa-instagram"></i>
+            <i> &nbsp </i>
+            <i class="fa-brands fa-twitter"></i>
+            <i> &nbsp </i>
+            <i class="fa-brands fa-facebook"></i>
+            <i> &nbsp </i>
+            <i class="fa-brands fa-youtube"></i>
+        </div>
+    </div>
+
+    <div></div>
+
+</footer>
+</body>
